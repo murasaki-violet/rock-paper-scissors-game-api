@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 
@@ -6,11 +7,11 @@ const server = http.createServer(app);
 const { Server } = require('socket.io');
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:3000","http://172.17.200.185:3000"]
+    origin: process.env.CORS_URL
   }
 });
-
-const port = 5000;
+//"http://localhost:3000","http://172.17.200.185:3000"
+const port = process.env.PORT;
 
 //接続テスト
 // app.get('/', (req, res) => {
